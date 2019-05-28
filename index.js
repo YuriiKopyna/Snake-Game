@@ -25,3 +25,12 @@ function drawScore() {
     ctx.textBaseline = "top";
     ctx.fillText("Score: " + score, blockSize, blockSize);
 };
+
+function gameOver() {
+    clearInterval(intervalId);
+    ctx.font = "60px Courier";
+    ctx.fillStyle = "Black";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("Game over", width / 2, height / 2);
+};
