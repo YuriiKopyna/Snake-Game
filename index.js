@@ -27,14 +27,12 @@ function drawScore() {
 }
 
 function gameOver() {
-//    clearInterval(intervalId);
+    clearInterval(intervalId);
     ctx.font = "60px Courier";
     ctx.fillStyle = "Black";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText("Game over", width / 2, height / 2);
 }
-drawBorder();
-drawScore();
-gameOver();
+
 
