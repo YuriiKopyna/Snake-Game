@@ -16,7 +16,7 @@ function drawBorder() {
     ctx.fillRect(0, height-blockSize, width, blockSize);
     ctx.fillRect(0, 0, blockSize, height);
     ctx.fillRect(width - blockSize, 0, blockSize, height);
-};
+}
 
 function drawScore() {
     ctx.font = "20px Courier";
@@ -24,7 +24,7 @@ function drawScore() {
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
     ctx.fillText("Score: " + score, blockSize, blockSize);
-};
+}
 
 function gameOver() {
 //    clearInterval(intervalId);
@@ -33,7 +33,8 @@ function gameOver() {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillText("Game over", width / 2, height / 2);
-};
+}
 drawBorder();
 drawScore();
 gameOver();
+
