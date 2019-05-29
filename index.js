@@ -6,6 +6,7 @@ var canvas = document.getElementById("canvas");
     var widthInBlocks = width / blockSize;
     var heightInBlocks = height / blockSize;
     var score = 0;
+    var animationTime = 100;
     
     
     var drawBorder = function () {
@@ -25,7 +26,7 @@ var canvas = document.getElementById("canvas");
     };
 
     var gameOver = function () {
-        clearInterval(intervalId);
+//        clearInterval(intervalId);
         ctx.font = "60px Courier";
         ctx.fillStyle = "Black";
         ctx.textAlign = "center";
@@ -77,9 +78,9 @@ var Snake = function () {
 Snake.prototype.draw = function () {
     for (var i = 0; i < this.segments.length; i++) {
     this.segments[i].drawSquare("Blue");
-    if (i === 0){
-        this.segments[0].drawSquare("Red");
-    }
+        if (i === 0){
+            this.segments[0].drawSquare("Red");
+        }
     }
     
 };
@@ -105,6 +106,7 @@ Snake.prototype.move = function () {
     if (newHead.equal(apple.position)) {
         score++;
         apple.move();
+        animationTime-=1;
         } else {
         this.segments.pop();
         }
@@ -160,14 +162,18 @@ Apple.prototype.move = function () {
 var snake = new Snake();
 var apple = new Apple();
 
-var intervalId = setInterval(function() {
+var gameLoop = function() {
     ctx.clearRect(0, 0, width, height);
     drawScore();
     snake.move();
     snake.draw();
     apple.draw();
     drawBorder();
-}, 100);
+    setTimeout(gameLoop, animationTime);
+}
+gameLoop();
+
+
 
 var directions = {
     37: "left",
@@ -177,8 +183,7 @@ var directions = {
 };
 
 $("body").keydown(function (event) {
-    var newDirection = directions[event.keyCode];
-    if (newDirection !== undefined) {
-        snake.setDirection(newDirection);
-    }
-});
+var newDirection = directions[event.keyCode];
+if (newDirection !== undefined) {
+    snake.setDirection(newDirection);
+}});
