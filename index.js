@@ -175,6 +175,6 @@ var directions = {
 $("body").keydown(function (event) {
     var newDirection = directions[event.keyCode];
     if (newDirection !== undefined) {
-        Snake.setDirection(newDirection);
+        snake.setDirection(newDirection);
     }
 });
