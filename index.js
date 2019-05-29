@@ -32,6 +32,15 @@ var canvas = document.getElementById("canvas");
         ctx.textBaseline = "middle";
         ctx.fillText("Game Over", width / 2, height / 2);
     };
+var circle = function (x, y, radius, fillCircle) {
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+    if (fillCircle) {
+        ctx.fill();
+    } else {
+        ctx.stroke();
+    }
+}    
 var Block = function (col, row) {
     this.col = col;
     this.row = row;
@@ -156,3 +165,6 @@ Apple.prototype.move = function () {
     var randomRow = Math.floor(Math.random() * (heightInBlocks - 2)) + 1;
     this.position = new Block(randomCol, randomRow); 
 }
+var apple = new Apple();
+apple.move();
+apple.draw();
