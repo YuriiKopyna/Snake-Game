@@ -123,19 +123,6 @@ Snake.prototype.checkCollision = function (head) {
     return wallCollision || selfCollision;
 };    
 
-var directions = {
-    37: "left",
-    38: "up",
-    39: "right",
-    40: "down"
-};
-
-$("body").keydown(function (event) {
-    var newDirection = directions[event.keyCode];
-    if (newDirection !== undefined) {
-        Snake.setDirection(newDirection);
-    }
-});
 
 Snake.prototype.setDirection = function (newDirection) {
     if (this.direction === "up" && newDirection === "down") {
@@ -165,6 +152,29 @@ Apple.prototype.move = function () {
     var randomRow = Math.floor(Math.random() * (heightInBlocks - 2)) + 1;
     this.position = new Block(randomCol, randomRow); 
 }
+
+var snake = new Snake();
 var apple = new Apple();
-apple.move();
-apple.draw();
+
+var intervalId = setInterval(function() {
+    ctx.clearRect(0, 0, width, height);
+    drawScore();
+    snake.move();
+    snake.draw();
+    apple.draw();
+    drawBorder();
+}, 100);
+
+var directions = {
+    37: "left",
+    38: "up",
+    39: "right",
+    40: "down"
+};
+
+$("body").keydown(function (event) {
+    var newDirection = directions[event.keyCode];
+    if (newDirection !== undefined) {
+        Snake.setDirection(newDirection);
+    }
+});
