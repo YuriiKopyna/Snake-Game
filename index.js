@@ -77,7 +77,11 @@ var Snake = function () {
 Snake.prototype.draw = function () {
     for (var i = 0; i < this.segments.length; i++) {
     this.segments[i].drawSquare("Blue");
+    if (i === 0){
+        this.segments[0].drawSquare("Red");
     }
+    }
+    
 };
 
 Snake.prototype.move = function () {
