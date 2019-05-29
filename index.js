@@ -140,3 +140,9 @@ Snake.prototype.setDirection = function (newDirection) {
     }
     this.nextDirection = newDirection;
 };
+
+// Apple
+
+var Apple = function () {
+    this.position = new Block(10, 10);
+}
