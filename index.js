@@ -113,3 +113,17 @@ Snake.prototype.checkCollision = function (head) {
     }
     return wallCollision || selfCollision;
 };    
+
+var directions = {
+    37: "left",
+    38: "up",
+    39: "right",
+    40: "down"
+};
+
+$("body").keydown(function (event) {
+    var newDirection = directions[event.keyCode];
+    if (newDirection !== undefined) {
+        Snake.setDirection(newDirection);
+    }
+});
